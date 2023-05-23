@@ -1,11 +1,11 @@
-from airflow import DAG
+import logging
 from pathlib import Path
+
+from airflow import DAG
 
 from dags.dag_settings import DagSettings
 from include.operators import InsertDataOperator
 from include.settings import Tags
-
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -49,4 +49,3 @@ with DAG(
     except Exception as e:
         logger.exception("Error generating InsertDataOperator.", exc_info=e)
         raise e
-

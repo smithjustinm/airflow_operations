@@ -17,6 +17,4 @@ class DagSettings(Settings):
     @property
     def dag_start_date(self):
         """DAG start date."""
-        return datetime(
-            year=2023, month=5, day=15, tzinfo=pendulum.timezone("US/Central")
-        )
+        return datetime(year=2023, month=5, day=15, tzinfo=pendulum.timezone("US/Central"))

@@ -1,21 +1,19 @@
-from typing import List, TypeVar, Optional
+import logging
+from typing import List, Optional, TypeVar
 
 import pandas as pd
 import sqlalchemy as sq
 from airflow.hooks.base import BaseHook
 from airflow.models.baseoperator import BaseOperator
 
-import logging
-
 logger = logging.getLogger(__name__)
 
-TInsertDataOperator = TypeVar(
-    "TInsertDataOperator", bound="InsertDataOperator"
-)
+TInsertDataOperator = TypeVar("TInsertDataOperator", bound="InsertDataOperator")
 
 
 class InsertDataOperator(BaseOperator):
-    """Operator that inserts data from parquet files, performs transformations, and inserts the data into Postgres.
+    """Operator that inserts data from parquet files, performs transformations,
+    and inserts the data into Postgres.
 
     Args:
         target_conn_id (str): The Airflow connection ID for the target database.
@@ -40,7 +38,6 @@ class InsertDataOperator(BaseOperator):
         drop_cols: Optional[List[str]] = None,
         fillna_cols: Optional[List[str]] = None,
         **kwargs,
-
     ):
         super().__init__(**kwargs)
         self.target_conn_id = target_conn_id
