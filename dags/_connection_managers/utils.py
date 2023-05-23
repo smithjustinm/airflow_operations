@@ -6,9 +6,7 @@ from airflow.utils.session import provide_session
 
 
 @provide_session
-def update_airflow_connection(
-    new_conn: Connection, session: Session, replace: bool = True
-):
+def update_airflow_connection(new_conn: Connection, session: Session, replace: bool = True):
     """Update or create a connection in Airflow.
 
     Args:
@@ -23,9 +21,7 @@ def update_airflow_connection(
 
     # noinspection PyUnresolvedReferences
     existing_conn: Connection = (
-        session.query(Connection)
-        .filter(Connection.conn_id == new_conn.conn_id)
-        .first()
+        session.query(Connection).filter(Connection.conn_id == new_conn.conn_id).first()
     )
 
     if existing_conn and replace:

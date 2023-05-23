@@ -1,7 +1,7 @@
 """ Postgres Connection Manager DAG """
-import pendulum
 from datetime import datetime, timedelta
 
+import pendulum
 from airflow import DAG
 from airflow.models import Connection
 from airflow.operators.python import PythonOperator
@@ -17,9 +17,7 @@ settings = Settings()
 #       change this value, you should rename the dag_id.
 #       More Info here: https://www.astronomer.io/guides/dag-best-practices.
 
-dag_start_date = datetime(
-    year=2023, month=5, day=15, tzinfo=pendulum.timezone("US/Central")
-)
+dag_start_date = datetime(year=2023, month=5, day=15, tzinfo=pendulum.timezone("US/Central"))
 
 
 def generate_update_postgres_connection_operator(

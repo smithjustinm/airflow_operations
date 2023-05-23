@@ -1,0 +1,65 @@
+[tool.bandit]
+exclude_dirs = ["tests"]
+tests = ["B201", "B301"]
+skips = ["B101", "B601"]
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 110
+
+[tool.flake8]
+ignore = [
+    'D203',
+    'W503',
+    'E203',
+    'E266',
+    'E501',
+    'W503',
+    'C901']
+exclude = [
+    '.tox',
+    '.git',
+    '__pycache__',
+    'docs/source/conf.py',
+    'sandbox/',
+    'build',
+    'dist',
+    'test/fixtures/*',
+    '*.pyc',
+    '*.egg-info',
+    '.cache',
+    '.eggs'
+]
+max-complexity=20
+import-order-style='google'
+
+[tool.coverage.xml]
+output = "test-reports/coverage.xml"
+
+[tool.coverage.html]
+directory = "test-reports/htmlcov"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--asyncio-mode=auto"
+testpaths = [
+    "tests/test_unit",
+]
+
+[tool.ruff]
+line-length = 110
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
